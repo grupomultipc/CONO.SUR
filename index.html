@@ -14,241 +14,115 @@
       --dark:   #1a1a2e;
       --text:   #2d2d2d;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    /* ── HERO ── */
     .hero {
-      position: relative;
-      height: 420px;
-      background: url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-      display: flex; align-items: flex-end;
-      overflow: hidden;
+      height: 400px;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1400&q=80') center/cover;
+      display: flex; align-items: flex-end; padding: 40px; color: #fff;
     }
-    .hero::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.1) 60%);
-    }
-    .hero-text {
-      position: relative; z-index: 1;
-      padding: 40px 48px;
-      width: 100%;
-    }
-    .hero-text .eyebrow {
-      display: inline-block;
-      background: var(--yellow);
-      color: #000;
-      font-size: .75rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 12px;
-    }
-    .hero-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      font-weight: 900;
-      color: #fff;
-      line-height: 1.1;
-    }
-    .hero-text h1 span { color: var(--yellow); }
+    .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 3rem; }
+    .hero-text span { color: var(--yellow); }
 
-    /* ── LAYOUT ── */
-    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
-
-    /* ── SECTION TITLES ── */
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+    
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      color: var(--navy);
-      margin: 56px 0 24px;
-      display: flex; align-items: center; gap: 14px;
+      font-size: 1.8rem; color: var(--navy);
+      margin: 40px 0 20px; display: flex; align-items: center; gap: 15px;
     }
-    .section-title .num {
-      background: var(--green);
-      color: #fff;
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      font-family: 'DM Sans', sans-serif;
-      font-size: .95rem;
-      font-weight: 700;
-      display: grid; place-items: center;
-      flex-shrink: 0;
-    }
+    .num { background: var(--green); color: white; width: 35px; height: 35px; border-radius: 50%; display: grid; place-items: center; font-size: 1rem; }
 
-    /* ── CARD ── */
-    .card {
-      background: #fff;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 6px 24px rgba(0,0,0,.08);
-      margin-bottom: 32px;
-    }
-    .card img {
-      width: 100%; height: 320px;
-      object-fit: cover; display: block;
-    }
-    .card-body { padding: 28px 32px; }
-    .card-body p {
-      font-size: .97rem;
-      line-height: 1.7;
-      color: #555;
-      margin-bottom: 18px;
-    }
+    .card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 30px; }
+    .card img { width: 100%; height: 350px; object-fit: cover; }
+    .card-body { padding: 30px; }
 
-    /* ── DISTANCE BADGE ── */
     .dist-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #e8f5e9;
-      border-left: 5px solid var(--green);
-      padding: 12px 20px;
-      border-radius: 0 12px 12px 0;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #1b5e20;
-      margin-bottom: 18px;
+      display: inline-block; background: #e8f5e9; color: #1b5e20;
+      padding: 10px 20px; border-radius: 8px; font-weight: 700; margin-bottom: 15px;
     }
 
-    /* ── TRAIN INFO BOX ── */
     .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      margin: 20px 0;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px; margin: 20px 0;
     }
-    .info-item {
-      background: #f9f9f9;
-      border-radius: 12px;
-      padding: 18px 16px;
-      text-align: center;
-    }
-    .info-item .label {
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      color: #888;
-      margin-bottom: 6px;
-    }
-    .info-item .value {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--navy);
-    }
+    .info-item { background: #f4f4f4; padding: 15px; border-radius: 10px; text-align: center; }
+    .info-item .label { font-size: 0.7rem; text-transform: uppercase; color: #777; }
+    .info-item .value { font-weight: 700; color: var(--navy); }
 
-    /* ── PHOTO STRIP ── */
-    .photo-strip {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin: 20px 0;
-    }
-    .photo-strip img {
-      width: 100%; height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-    .photo-strip img.wide {
-      grid-column: span 2;
-      height: 300px;
-    }
+    .photo-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+    .photo-strip img { height: 200px; width: 100%; object-fit: cover; border-radius: 10px; }
+    .photo-strip .wide { grid-column: span 2; height: 300px; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--dark);
-      color: #aaa;
-      text-align: center;
-      padding: 28px 16px;
-      font-size: .82rem;
-      margin-top: 60px;
-    }
-    footer span { color: var(--yellow); }
-
-    @media(max-width:600px){
-      .hero-text { padding: 24px 20px; }
-      .card-body { padding: 20px; }
-      .section-title { font-size: 1.35rem; }
-    }
+    footer { background: var(--dark); color: white; text-align: center; padding: 30px; margin-top: 50px; }
   </style>
 </head>
 <body>
 
 <div class="hero">
   <div class="hero-text">
-    <span class="eyebrow">5 y 6 de Julio · 2026  ·  Temporada Alta</span>
-    <h1>Guía de Distancias<br><span>Río de Janeiro</span></h1>
+    <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--yellow);">5 y 6 de Julio · 2026</p>
+    <h1>Guía de Distancias: <span>Río</span></h1>
   </div>
 </div>
 
 <div class="container">
 
-  <h2 class="section-title"><span class="num">1</span>Aeropuerto GIG → Copacabana / Ipanema</h2>
+  <h2 class="section-title"><span class="num">1</span> Aeropuerto GIG → Playa</h2>
   <div class="card">
-    <img src="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?auto=format&fit=crop&w=1000&q=80" alt="Vista de Río de Janeiro" />
+    <img src="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?auto=format&fit=crop&w=1200&q=80" alt="Río de Janeiro">
     <div class="card-body">
-      <p>El <strong>Aeropuerto Internacional de Galeão (GIG)</strong> se ubica en la Ilha do Governador. Es la principal puerta de entrada internacional a la Ciudad Maravillosa.</p>
-      <div class="dist-badge">Distancia: aprox. 22 km  |  Tiempo: 30 – 50 min</div>
+      <p>Trayecto desde el <strong>Aeropuerto Galeão (GIG)</strong> hacia Copacabana o Ipanema.</p>
+      <div class="dist-badge">Distancia: ~22 km | Tiempo: 30 – 50 min</div>
     </div>
   </div>
 
-  <h2 class="section-title"><span class="num">2</span>Playa (Copacabana) → Cristo Redentor</h2>
+  <h2 class="section-title"><span class="num">2</span> Copacabana → Cristo Redentor</h2>
   <div class="card">
-    <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1000&q=80" alt="Cristo Redentor" />
+    <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1200&q=80" alt="Cristo Redentor">
     <div class="card-body">
-      <p>Desde la costa, el viaje hacia el Morro do Corcovado es una transición mágica entre el mar y la selva urbana.</p>
-      <div class="dist-badge">Copacabana → Estación: 7 km  |  20 min</div>
+      <p>Desde la playa hasta la base donde comienza la aventura en tren.</p>
+      <div class="dist-badge">Copacabana → Cosme Velho: ~7 km (20 min)</div>
     </div>
   </div>
 
-  <h2 class="section-title"><span class="num">3</span>Tren del Corcovado — Fotos y Datos</h2>
+  <h2 class="section-title"><span class="num">3</span> Tren del Corcovado — Datos Técnicos</h2>
   <div class="card">
     <div class="card-body">
-      <p>El <strong>Trem do Corcovado</strong> atraviesa la Floresta da Tijuca, el bosque urbano más grande del mundo. Es una experiencia ecológica e histórica inigualable.</p>
-
+      <p>El <strong>Trem do Corcovado</strong> es un sistema de cremallera eléctrico inaugurado en 1884.</p>
+      
       <div class="info-grid">
         <div class="info-item"><div class="label">Inauguración</div><div class="value">1884</div></div>
         <div class="info-item"><div class="label">Longitud</div><div class="value">3.8 km</div></div>
-        <div class="info-item"><div class="label">Altitud</div><div class="value">710 m</div></div>
-        <div class="info-item"><div class="label">Sistema</div><div class="value">Cremallera</div></div>
+        <div class="info-item"><div class="label">Altitud</div><div class="value">710 m s.n.m.</div></div>
+        <div class="info-item"><div class="label">Duración</div><div class="value">~20 min</div></div>
       </div>
 
       <div class="photo-strip">
-        <img class="wide" src="https://images.unsplash.com/photo-1591461530132-7501a34d07c0?auto=format&fit=crop&w=1000&q=80" alt="Vía del tren en la selva" />
-        <img src="https://images.unsplash.com/photo-1518639192441-8fce0a366e2e?auto=format&fit=crop&w=600&q=80" alt="Vista desde el tren" />
-        <img src="https://images.unsplash.com/photo-1627664819818-e147d6221422?auto=format&fit=crop&w=600&q=80" alt="Cristo de cerca" />
+        <img class="wide" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bahnstrecke_zu_Cristo_Redentor_2_%2821928125320%29.jpg/1280px-Bahnstrecke_zu_Cristo_Redentor_2_%2821928125320%29.jpg" alt="Tren Rojo del Corcovado">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Bahnstrecke_zu_Cristo_Redentor_4_%2821495190833%29.jpg/640px-Bahnstrecke_zu_Cristo_Redentor_4_%2821495190833%29.jpg" alt="Vista desde las vías">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Christ_the_Redeemer_-_Cristo_Redentor.jpg/640px-Christ_the_Redeemer_-_Cristo_Redentor.jpg" alt="Cristo Redentor">
       </div>
     </div>
   </div>
 
-  <h2 class="section-title"><span class="num">4</span>Estación Cosme Velho & El Trayecto</h2>
+  <h2 class="section-title"><span class="num">4</span> Estación Cosme Velho</h2>
   <div class="card">
-    <img src="https://images.unsplash.com/photo-1613143323550-7a9044734383?auto=format&fit=crop&w=1000&q=80" alt="Estación Cosme Velho" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Estacao_cosme_velho.jpg/1280px-Estacao_cosme_velho.jpg" alt="Fachada Estación Cosme Velho">
     <div class="card-body">
-      <p>La <strong>Estação Cosme Velho</strong> conserva el encanto del Río antiguo. Se recomienda llegar con 20 minutos de antelación a su horario de salida.</p>
-      
+      <p>Punto de partida oficial en <strong>Rua Cosme Velho 513</strong>. Es vital llegar con antelación para el embarque.</p>
       <div class="photo-strip">
-        <img src="https://images.unsplash.com/photo-1541410903859-99a380486c87?auto=format&fit=crop&w=600&q=80" alt="Vegetación de Tijuca" />
-        <img src="https://images.unsplash.com/photo-1473186578172-c141e6798ee4?auto=format&fit=crop&w=600&q=80" alt="Río de Janeiro vista aérea" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Corcovado_rack_railway.jpg/640px-Corcovado_rack_railway.jpg" alt="Vagón histórico">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Bahnstrecke_zu_Cristo_Redentor_1_%2821929390349%29.jpg/640px-Bahnstrecke_zu_Cristo_Redentor_1_%2821929390349%29.jpg" alt="Tren cruzando la selva">
       </div>
-      <p style="font-size:.88rem; color:#777;">🚂 Los vagones ofrecen vistas panorámicas. ¡Prepara tu cámara para el lado derecho durante el ascenso!</p>
     </div>
   </div>
 
 </div>
 
 <footer>
-  <p>Guía de Viaje · <span>Río de Janeiro 2026</span> · Información actualizada para temporada alta.</p>
+  <p>Guía de Viaje · <span>Río de Janeiro 2026</span> · Verifique horarios locales.</p>
 </footer>
 
 </body>
