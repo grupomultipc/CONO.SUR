@@ -1,481 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Guía de Viaje · Río de Janeiro 2026 · Tren del Corcovado</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: #FDF8F0;
-      color: #1e2a2e;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
-
-    :root {
-      --green: #009c3b;
-      --yellow: #FFDF00;
-      --navy: #002776;
-      --cream: #FDF8F0;
-      --dark: #1a1a2e;
-      --text: #2d2d2d;
-      --gray-light: #f4f2ef;
-    }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      height: 460px;
-      background: linear-gradient(105deg, #001d3d 0%, #002f5f 100%), url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=1600&q=80');
-      background-blend-mode: overlay;
-      background-size: cover;
-      background-position: center 30%;
-      display: flex;
-      align-items: flex-end;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0.2) 70%);
-      pointer-events: none;
-    }
-    .hero-text {
-      position: relative;
-      z-index: 2;
-      padding: 40px 32px 48px;
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .eyebrow {
-      display: inline-block;
-      background: var(--yellow);
-      color: #000;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 40px;
-      margin-bottom: 16px;
-      backdrop-filter: blur(2px);
-    }
-    .hero-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      font-weight: 900;
-      color: white;
-      line-height: 1.15;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-    }
-    .hero-text h1 span {
-      color: var(--yellow);
-      border-bottom: 3px solid var(--green);
-    }
-
-    /* container */
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* section titles */
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: var(--navy);
-      margin: 60px 0 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .section-title .num {
-      background: var(--green);
-      color: white;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 800;
-      font-size: 1.3rem;
-      box-shadow: 0 6px 12px rgba(0,156,59,0.25);
-    }
-
-    /* cards */
-    .card {
-      background: white;
-      border-radius: 28px;
-      overflow: hidden;
-      box-shadow: 0 16px 32px -12px rgba(0,0,0,0.12);
-      margin-bottom: 40px;
-      transition: transform 0.2s ease;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-    }
-    .card-img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      display: block;
-      background: #e2e8f0;
-    }
-    .card-body {
-      padding: 28px 32px 36px;
-    }
-    .card-body p {
-      font-size: 1rem;
-      line-height: 1.65;
-      color: #2c3e3f;
-      margin-bottom: 20px;
-    }
-
-    /* distance badge */
-    .dist-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: #e9f7eb;
-      border-left: 6px solid var(--green);
-      padding: 12px 22px;
-      border-radius: 0 20px 20px 0;
-      font-weight: 600;
-      color: #1a5c2a;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
-    }
-
-    /* map container */
-    .map-wrap {
-      position: relative;
-      padding-bottom: 48%;
-      height: 0;
-      border-radius: 20px;
-      overflow: hidden;
-      margin-top: 16px;
-      border: 1px solid #e9e2d4;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .map-wrap iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    /* info grid */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 18px;
-      margin: 28px 0 24px;
-    }
-    .info-item {
-      background: var(--gray-light);
-      border-radius: 20px;
-      padding: 18px 12px;
-      text-align: center;
-      transition: all 0.2s;
-    }
-    .info-item .label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #5b6e6e;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .info-item .value {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--navy);
-    }
-
-    /* photo strip - galería de tren y estación */
-    .photo-strip {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin: 28px 0 16px;
-    }
-    .photo-strip img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      border-radius: 18px;
-      background: #cdd5da;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-      transition: 0.2s;
-    }
-    .photo-strip img.wide {
-      grid-column: span 2;
-      height: 250px;
-    }
-
-    /* galería especial para imágenes de tren y estación (más inmersiva) */
-    .gallery-train {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin: 24px 0 20px;
-    }
-    .gallery-card {
-      background: #fef9ef;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.08);
-    }
-    .gallery-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-    }
-    .gallery-card p {
-      padding: 12px 14px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      text-align: center;
-      background: white;
-      margin: 0;
-      color: #002776;
-    }
-
-    img {
-      background: #dee2e6;
-    }
-
-    footer {
-      background: var(--dark);
-      color: #bbbbbb;
-      text-align: center;
-      padding: 32px 20px;
-      font-size: 0.85rem;
-      margin-top: 60px;
-    }
-    footer span {
-      color: var(--yellow);
-      font-weight: 500;
-    }
-
-    @media (max-width: 680px) {
-      .container {
-        padding: 0 18px;
-      }
-      .card-body {
-        padding: 20px;
-      }
-      .section-title {
-        font-size: 1.5rem;
-        margin-top: 40px;
-      }
-      .photo-strip {
-        gap: 10px;
-      }
-      .photo-strip img {
-        height: 150px;
-      }
-      .photo-strip img.wide {
-        height: 180px;
-      }
-      .hero {
-        height: 360px;
-      }
-      .gallery-train {
-        gap: 12px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería del Tour</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .foto-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .foto-card:hover {
+            transform: translateY(-8px);
+        }
+        .foto-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        .info {
+            padding: 15px;
+            text-align: center;
+            background: #fff;
+        }
+        .info h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #2c3e50;
+            text-transform: capitalize;
+        }
+    </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-text">
-    <span class="eyebrow">5 y 6 de Julio · 2026 &nbsp;✦&nbsp; Temporada Alta</span>
-    <h1>Guía de Distancias<br><span>Río de Janeiro</span> · Corcovado & Tren</h1>
-  </div>
-</div>
+    <div class="container">
+        <header>
+            <h1>Galería de Imágenes del Viaje</h1>
+            <p>Explora los destinos destacados de nuestro próximo tour</p>
+        </header>
 
-<div class="container">
+        <div class="galeria-grid">
+            
+            <div class="foto-card">
+                <img src="fotos/aeropuerto.jpg" alt="Aeropuerto">
+                <div class="info"><h3>Traslado Aeropuerto</h3></div>
+            </div>
 
-  <!-- 1. AEROPUERTO GIG → PLAYA -->
-  <h2 class="section-title"><span class="num">1</span>Aeropuerto GIG → Copacabana / Ipanema</h2>
-  <div class="card">
-    <img class="card-img" src="https://images.unsplash.com/photo-1591085683529-0f213eb73d27?auto=format&fit=crop&w=1200&q=80" alt="Aeropuerto Galeão Río" loading="lazy"
-         onerror="this.src='https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?auto=format&fit=crop&w=900&q=80'">
-    <div class="card-body">
-      <p>El <strong>Aeropuerto Internacional de Galeão (GIG)</strong> está situado en la Ilha do Governador, al norte. Conectar hasta las playas de Copacabana e Ipanema es rápido por la Línea Roja y el Túnel Rebouças, una arteria clave de la ciudad.</p>
-      <div class="dist-badge">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M13 6l6 6-6 6"/></svg>
-        Distancia: aprox. 22 km &nbsp;|&nbsp; Tiempo en auto: 30 – 50 min (depende del tránsito)
-      </div>
-      <div class="map-wrap">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d55822.4!2d-43.22!3d-22.92!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x997fd09e47c2c34f%3A0x15b24a8c2571b3c9!2sAeroporto%20Internacional%20do%20Rio%20de%20Janeiro%20-%20Gale%C3%A3o!3m2!1d-22.8099!2d-43.2505!4m5!1s0x9bd5442f61877d%3A0xc3d84381016833b3!2sCopacabana%2C%20Rio%20de%20Janeiro!3m2!1d-22.9697!2d-43.1868!5e0!3m2!1ses!2s!4v1700000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </div>
+            <div class="foto-card">
+                <img src="fotos/ascenso entre floresta de tijuca.webp" alt="Floresta de Tijuca">
+                <div class="info"><h3>Ascenso Floresta de Tijuca</h3></div>
+            </div>
 
-  <!-- 2. PLAYA → CRISTO REDENTOR -->
-  <h2 class="section-title"><span class="num">2</span>Playa (Copacabana) → Cristo Redentor</h2>
-  <div class="card">
-    <img class="card-img" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80" alt="Cristo Redentor desde el cerro" loading="lazy"
-         onerror="this.src='https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=80'">
-    <div class="card-body">
-      <p>Desde el corazón de Copacabana hasta la <strong>Estación Cosme Velho</strong> (inicio del Tren del Corcovado) el recorrido urbano es breve. Luego el famoso tren de cremallera asciende 710 metros entre exuberante selva atlántica.</p>
-      <div class="dist-badge">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M13 6l6 6-6 6"/></svg>
-        Copacabana → Estación Cosme Velho: aprox. 7 km · 15–20 min en coche / Uber
-      </div>
-      <div class="dist-badge" style="margin-top: 6px;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M13 6l6 6-6 6"/></svg>
-        Estación Cosme Velho → Cima del Corcovado (tren): 3.8 km · 20 minutos de travesía panorámica
-      </div>
-      <div class="map-wrap">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d3673.83!2d-43.20815!3d-22.9554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x9bd5442f61877d%3A0xc3d84381016833b3!2sCopacabana!3m2!1d-22.9697785!2d-43.1868587!4m5!1s0x997fd59449fbb7%3A0x199347d46816223e!2sTren%20del%20Corcovado%20-%20Estaci%C3%B3n%20Cosme%20Velho!3m2!1d-22.942125!2d-43.2012656!5e0!3m2!1ses!2s!4v1700000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-    </div>
-  </div>
+            <div class="foto-card">
+                <img src="fotos/Copacabana.avif" alt="Copacabana">
+                <div class="info"><h3>Playa de Copacabana</h3></div>
+            </div>
 
-  <!-- 3. TREN DEL CORCOVADO — DATOS + GALERÍA ESPECIAL DE IMÁGENES DEL TREN Y ESTACIÓN -->
-  <h2 class="section-title"><span class="num">3</span>Tren del Corcovado · Historia y Especificaciones</h2>
-  <div class="card">
-    <div class="card-body">
-      <p>El <strong>Trem do Corcovado</strong> es la forma más emblemática de visitar al Cristo Redentor. Inaugurado en 1884, es uno de los ferrocarriles de cremallera más antiguos del mundo y serpentea a través de la majestuosa Floresta da Tijuca, el bosque urbano más grande del planeta.</p>
-      
-      <div class="info-grid">
-        <div class="info-item"><div class="label">Inauguración</div><div class="value">1884</div></div>
-        <div class="info-item"><div class="label">Longitud Vía</div><div class="value">3.8 km</div></div>
-        <div class="info-item"><div class="label">Altitud Cima</div><div class="value">710 m s.n.m.</div></div>
-        <div class="info-item"><div class="label">Duración Viaje</div><div class="value">~20 min</div></div>
-        <div class="info-item"><div class="label">Sistema</div><div class="value">Cremallera Eléctrico</div></div>
-        <div class="info-item"><div class="label">Horario</div><div class="value">08:00 – 19:00</div></div>
-      </div>
+            <div class="foto-card">
+                <img src="fotos/vagones con sistema de cremallera.jpg" alt="Tren de cremallera">
+                <div class="info"><h3>Sistema de Cremallera</h3></div>
+            </div>
 
-      <!-- GALERÍA DE FOTOS: TREN Y ESTACIÓN (imágenes reales y variadas) -->
-      <div class="gallery-train">
-        <div class="gallery-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bahnstrecke_zu_Cristo_Redentor_2_%2821928125320%29.jpg/1024px-Bahnstrecke_zu_Cristo_Redentor_2_%2821928125320%29.jpg" 
-               alt="Tren del Corcovado atravesando la selva atlántica"
-               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Rio_Corcovado_wet_tramline_0809_02.jpg/1024px-Rio_Corcovado_wet_tramline_0809_02.jpg'">
-          <p>🚞 Ascenso entre la Floresta da Tijuca</p>
+            <div class="foto-card">
+                <img src="fotos/vista espectacular durante trayecto.jpg" alt="Vista trayecto">
+                <div class="info"><h3>Vistas del Trayecto</h3></div>
+            </div>
+
         </div>
-        <div class="gallery-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Corcovado_rack_railway.jpg/800px-Corcovado_rack_railway.jpg" 
-               alt="Vagón histórico del Tren del Corcovado"
-               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/BondeAndRackRailwayRioDeJaneiro2005.png/640px-BondeAndRackRailwayRioDeJaneiro2005.png'">
-          <p>🚋 Vagones panorámicos con sistema de cremallera</p>
-        </div>
-        <div class="gallery-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Estacao_cosme_velho.jpg/1280px-Estacao_cosme_velho.jpg" 
-               alt="Fachada histórica Estación Cosme Velho"
-               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Corcovado_station_-_geograph.org.uk_-_871455.jpg/1280px-Corcovado_station_-_geograph.org.uk_-_871455.jpg'">
-          <p>🏛️ Estación Cosme Velho - punto de partida</p>
-        </div>
-        <div class="gallery-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Bahnstrecke_zu_Cristo_Redentor_1_%2821929390349%29.jpg/800px-Bahnstrecke_zu_Cristo_Redentor_1_%2821929390349%29.jpg" 
-               alt="Tren subiendo con vista a la ciudad"
-               onerror="this.src='https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?auto=format&fit=crop&w=800&q=80'">
-          <p>🌆 Vistas espectaculares durante el trayecto</p>
-        </div>
-      </div>
-
-      <p style="background: #FFF2DF; padding: 14px 18px; border-radius: 20px; font-size:0.9rem; margin-top: 16px;">
-        🎟️ <strong>Recomendación clave:</strong> Los boletos para el Tren del Corcovado se agotan rápido en temporada alta (julio, carnaval, año nuevo). Compra con anticipación en el sitio oficial. El embarque es en la <strong>Estação Cosme Velho (Rua Cosme Velho, 513)</strong>. ¡Llega con al menos 30 min de anticipación!
-      </p>
     </div>
-  </div>
 
-  <!-- 4. ESTACIÓN COSME VELHO Y DETALLES DEL TREN (más imágenes + interior de la estación) -->
-  <h2 class="section-title"><span class="num">4</span>Estación Cosme Velho · El corazón del Ferrocarril</h2>
-  <div class="card">
-    <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Corcovado_station_-_geograph.org.uk_-_871455.jpg/1280px-Corcovado_station_-_geograph.org.uk_-_871455.jpg" 
-         alt="Estación Cosme Velho vista exterior e interior" loading="lazy"
-         onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Estacao_cosme_velho.jpg/1280px-Estacao_cosme_velho.jpg'">
-    <div class="card-body">
-      <p>La <strong>Estação Cosme Velho</strong> no es solo un punto de partida, es una reliquia ferroviaria. Con su arquitectura de principios del siglo XX, alberga taquillas, cafetería y una tienda de recuerdos. Desde aquí, los trenes parten cada 30 minutos aproximadamente, subiendo la montaña con vistas únicas a la ciudad y al Parque Nacional da Tijuca.</p>
-      
-      <!-- Galería doble de fotos del tren y estación: más variedad -->
-      <div class="photo-strip">
-        <img class="wide" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Rio_Corcovado_wet_tramline_0809_02.jpg/1024px-Rio_Corcovado_wet_tramline_0809_02.jpg" 
-             alt="Vía del tren en la floresta con vegetación"
-             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Lascar_Cog_train_to_Cristo_Redentor_%284551178965%29.jpg/1024px-Lascar_Cog_train_to_Cristo_Redentor_%284551178965%29.jpg'">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Bahnstrecke_zu_Cristo_Redentor_4_%2821495190833%29.jpg/800px-Bahnstrecke_zu_Cristo_Redentor_4_%2821495190833%29.jpg" 
-             alt="Vista panorámica desde el tren hacia la Bahía"
-             onerror="this.src='https://images.unsplash.com/photo-1548863250-efb9b6c3b3b3?auto=format&fit=crop&w=800&q=80'">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Christ_the_Redeemer_-_Cristo_Redentor.jpg/800px-Christ_the_Redeemer_-_Cristo_Redentor.jpg" 
-             alt="Cristo Redentor visto desde las escalinatas"
-             onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80'">
-      </div>
-
-      <div style="background: #eef4ff; border-radius: 20px; padding: 16px 20px; margin: 18px 0 8px;">
-        <p style="margin-bottom: 0; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-          🚞 <strong>Dato histórico:</strong> El sistema de cremallera utiliza un riel dentado central que permite superar pendientes de hasta el 30%. Cada vagón ofrece ventanales panorámicos para no perderte la exuberante vegetación y las vistas hacia la Bahía de Guanabara.
-        </p>
-      </div>
-      
-      <!-- Imagen adicional de un tren en movimiento cerca de la estación -->
-      <div style="margin-top: 24px;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Lascar_Cog_train_to_Cristo_Redentor_%284551178965%29.jpg/1024px-Lascar_Cog_train_to_Cristo_Redentor_%284551178965%29.jpg" 
-             alt="Tren cremallera en operación" 
-             style="width:100%; border-radius: 24px; max-height: 280px; object-fit: cover;"
-             onerror="this.src='https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?auto=format&fit=crop&w=900&q=80'">
-        <p style="font-size:0.85rem; text-align:center; margin-top: 8px; color:#2c5e2f;">✨ El famoso tren de cremallera en pleno ascenso por la montaña del Corcovado</p>
-      </div>
-
-      <p style="margin-top: 22px; font-size: 0.9rem; color: #2c5e2f; background: #f0f7e8; padding: 12px 18px; border-radius: 20px;">
-        📍 <strong>Dirección exacta:</strong> Rua Cosme Velho, 513 - Cosme Velho, Río de Janeiro - RJ, 22241-091. Acceso por transporte público: Metrô hasta estación Largo do Machado + bus o taxi 5 min.
-      </p>
-    </div>
-  </div>
-  
-  <!-- NOTA FINAL INFORMATIVA (sin sección "ruta eficiente", solo consejos básicos) -->
-  <div style="background: #FFFFFF; border-radius: 24px; padding: 6px 0 12px; margin: 20px 0 10px; text-align: center;">
-    <p style="font-size:0.85rem; color:#5c6e5c;">🚉 Horarios sujetos a cambios. Verifique siempre la operación del Tren del Corcovado en fechas especiales.</p>
-  </div>
-</div>
-
-<footer>
-  <p>Guía de Viaje · <span>Río de Janeiro 2026</span> · Distancias y horarios referenciales. Verifique disponibilidad del Tren del Corcovado antes de viajar. ¡Disfruta la ciudad maravillosa con responsabilidad!</p>
-  <p style="margin-top: 8px;">Fotografías: Wikimedia Commons y Unsplash · Tren del Corcovado, Estación Cosme Velho y paisajes cariocas.</p>
-</footer>
-
-<script>
-  // fallback para imágenes rotas de forma elegante
-  (function fixImages() {
-    const imgs = document.querySelectorAll('img');
-    imgs.forEach(img => {
-      img.setAttribute('loading', 'lazy');
-      if (!img.complete) {
-        img.addEventListener('error', function(e) {
-          if (!this.dataset.fallbackAttempted) {
-            this.dataset.fallbackAttempted = 'true';
-            if (this.src.includes('upload.wikimedia.org') && !this.src.includes('placeholder')) {
-              this.src = 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=800&q=80';
-            } else if (this.src === '' || this.src.includes('undefined')) {
-              this.src = 'https://images.unsplash.com/photo-1516306580123-e6e52b1b7b5f?auto=format&fit=crop&w=800&q=80';
-            }
-          }
-        });
-      }
-    });
-  })();
-</script>
 </body>
 </html>
