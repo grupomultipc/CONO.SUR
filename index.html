@@ -1,96 +1,184 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería del Tour</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f5f7fa;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            padding: 40px 0;
-        }
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .foto-card {
-            background: #fff;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-        }
-        .foto-card:hover {
-            transform: translateY(-8px);
-        }
-        .foto-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-        }
-        .info {
-            padding: 15px;
-            text-align: center;
-            background: #fff;
-        }
-        .info h3 {
-            margin: 0;
-            font-size: 1.1rem;
-            color: #2c3e50;
-            text-transform: capitalize;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía Río de Janeiro 2026 - Tren del Corcovado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --green:  #009c3b;
+      --yellow: #FFDF00;
+      --navy:   #002776;
+      --cream:  #FDF8F0;
+      --text:   #2d2d2d;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* --- DISEÑO DE RIO_GUIA --- */
+    .hero {
+      background: linear-gradient(rgba(0,39,118,0.7), rgba(0,39,118,0.7)), 
+                  url('fotos/vista espectacular durante trayecto.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      border-bottom: 8px solid var(--yellow);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .intro-text {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      border-left: 10px solid var(--green);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      margin-bottom: 50px;
+    }
+
+    /* --- SECCIÓN FUSIONADA: TREN DEL CORCOVADO --- */
+    .section-divider {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-divider h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--navy);
+      display: inline-block;
+      position: relative;
+    }
+
+    .section-divider h2::after {
+      content: '';
+      display: block;
+      width: 60%;
+      height: 4px;
+      background: var(--yellow);
+      margin: 10px auto;
+    }
+
+    /* --- CUADRÍCULA DE FOTOS (INDEX) --- */
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .foto-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .foto-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .foto-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .foto-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .foto-info h3 {
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+      color: var(--navy);
+    }
+
+    footer {
+      background: var(--navy);
+      color: white;
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 60px;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Galería de Imágenes del Viaje</h1>
-            <p>Explora los destinos destacados de nuestro próximo tour</p>
-        </header>
+  <header class="hero">
+    <h1>Río de Janeiro 2026</h1>
+    <p>Guía de viaje oficial y logística</p>
+  </header>
 
-        <div class="galeria-grid">
-            
-            <div class="foto-card">
-                <img src="fotos/aeropuerto.jpg" alt="Aeropuerto">
-                <div class="info"><h3>Traslado Aeropuerto</h3></div>
-            </div>
-
-            <div class="foto-card">
-                <img src="fotos/ascenso entre floresta de tijuca.webp" alt="Floresta de Tijuca">
-                <div class="info"><h3>Ascenso Floresta de Tijuca</h3></div>
-            </div>
-
-            <div class="foto-card">
-                <img src="fotos/Copacabana.avif" alt="Copacabana">
-                <div class="info"><h3>Playa de Copacabana</h3></div>
-            </div>
-
-            <div class="foto-card">
-                <img src="fotos/vagones con sistema de cremallera.jpg" alt="Tren de cremallera">
-                <div class="info"><h3>Sistema de Cremallera</h3></div>
-            </div>
-
-            <div class="foto-card">
-                <img src="fotos/vista espectacular durante trayecto.jpg" alt="Vista trayecto">
-                <div class="info"><h3>Vistas del Trayecto</h3></div>
-            </div>
-
-        </div>
+  <div class="container">
+    
+    <div class="intro-text">
+      <h2>Experiencia en la Selva de Tijuca</h2>
+      <p>Iniciamos nuestro recorrido hacia uno de los puntos más emblemáticos del mundo. A continuación, el detalle visual de nuestra travesía en el tren de cremallera y los puntos clave del trayecto.</p>
     </div>
+
+    <div class="section-divider">
+      <h2>Tren del Corcovado en la Selva</h2>
+    </div>
+
+    <div class="galeria-grid">
+      
+      <div class="foto-card">
+        <img src="fotos/vagones con sistema de cremallera.jpg" alt="Tren">
+        <div class="foto-info"><h3>Tren de Cremallera</h3></div>
+      </div>
+
+      <div class="foto-card">
+        <img src="fotos/ascenso entre floresta de tijuca.webp" alt="Selva">
+        <div class="foto-info"><h3>Floresta de Tijuca</h3></div>
+      </div>
+
+      <div class="foto-card">
+        <img src="fotos/vista espectacular durante trayecto.jpg" alt="Vista">
+        <div class="foto-info"><h3>Mirador del Trayecto</h3></div>
+      </div>
+
+      <div class="foto-card">
+        <img src="fotos/Copacabana.avif" alt="Copacabana">
+        <div class="foto-info"><h3>Playa de Copacabana</h3></div>
+      </div>
+
+      <div class="foto-card">
+        <img src="fotos/aeropuerto.jpg" alt="Aeropuerto">
+        <div class="foto-info"><h3>Traslado Logístico</h3></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Tour Sudamérica - Río de Janeiro</p>
+  </footer>
 
 </body>
 </html>
